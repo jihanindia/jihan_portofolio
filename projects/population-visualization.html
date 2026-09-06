@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Population Data Visualization – Jihan's Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            navy: '#0B0F19',
+                            black: '#05070A',
+                            purple: '#9333EA',
+                            blue: '#2563EB',
+                            pink: '#EC4899',
+                            lightBg: '#F8FAFC'
+                        }
+                    },
+                    boxShadow: {
+                        'glow-purple': '0 0 20px rgba(147, 51, 234, 0.45)',
+                        'glow-pink': '0 0 20px rgba(236, 72, 153, 0.45)',
+                        'glow-blue': '0 0 20px rgba(37, 99, 235, 0.45)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glow-text-purple { text-shadow: 0 0 12px rgba(147, 51, 234, 0.6); }
+        .photo-slot {
+            border: 2px dashed #c4b5fd;
+            background: #faf5ff;
+            min-height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #a78bfa;
+            border-radius: 1rem;
+            text-align: center;
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body class="bg-brand-lightBg text-brand-navy antialiased">
+
+    <!-- NAVBAR -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-purple-100">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="../index.html" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-brand-purple transition">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+                Back to Portfolio
+            </a>
+            <a href="../index.html" class="text-xl font-extrabold tracking-wider bg-gradient-to-r from-brand-purple via-brand-blue to-brand-pink bg-clip-text text-transparent">
+                JIHAN<span class="text-brand-pink">.</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="pt-32 pb-12 px-6 bg-gradient-to-b from-purple-50/60 via-white to-brand-lightBg relative overflow-hidden">
+        <div class="absolute top-16 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-gradient-to-tr from-brand-purple/20 via-brand-pink/20 to-brand-blue/20 rounded-full blur-3xl -z-10"></div>
+        <div class="max-w-4xl mx-auto text-center space-y-4">
+            <span class="inline-block text-[10px] font-bold px-3 py-1 bg-purple-100 text-brand-purple rounded-full uppercase tracking-wider">Visualization · 2024</span>
+            <h1 class="text-3xl md:text-5xl font-extrabold text-brand-black glow-text-purple leading-tight">
+                Population Data<br>Visualization
+            </h1>
+            <p class="text-slate-600 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+                Interactive data visualization using Tableau to display Bogor City's population count by region, helping the office monitor population distribution accurately.
+            </p>
+            <div class="flex flex-wrap justify-center gap-3 pt-2">
+                <span class="px-4 py-1.5 rounded-lg bg-white border border-slate-200 text-xs font-semibold text-slate-600">Tableau</span>
+                <span class="px-4 py-1.5 rounded-lg bg-white border border-slate-200 text-xs font-semibold text-slate-600">Data Visualization</span>
+                <span class="px-4 py-1.5 rounded-lg bg-white border border-slate-200 text-xs font-semibold text-slate-600">Population Data</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="py-12 px-6 bg-white">
+        <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-8">
+            <div class="bg-brand-lightBg rounded-2xl p-6 border border-purple-100 hover:shadow-glow-purple transition-all duration-300 text-center">
+                <span class="text-2xl font-extrabold text-brand-purple block">Tableau</span>
+                <span class="text-xs text-slate-500 mt-1 block">Tools Used</span>
+            </div>
+            <div class="bg-brand-lightBg rounded-2xl p-6 border border-blue-100 hover:shadow-glow-blue transition-all duration-300 text-center">
+                <span class="text-2xl font-extrabold text-brand-blue block">2024</span>
+                <span class="text-xs text-slate-500 mt-1 block">Year</span>
+            </div>
+            <div class="bg-brand-lightBg rounded-2xl p-6 border border-pink-100 hover:shadow-glow-pink transition-all duration-300 text-center">
+                <span class="text-2xl font-extrabold text-brand-pink block">Disdukcapil</span>
+                <span class="text-xs text-slate-500 mt-1 block">Client / Stakeholder</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESCRIPTION -->
+    <section class="py-12 px-6 bg-brand-lightBg">
+        <div class="max-w-4xl mx-auto space-y-6">
+            <h2 class="text-2xl font-extrabold text-brand-black">Project Overview</h2>
+            <p class="text-slate-600 leading-relaxed">
+                This project was developed during the internship at Dinas Kependudukan dan Pencatatan Sipil Kota Bogor. The goal was to create an interactive dashboard in Tableau that visualizes population distribution data across different sub-districts in Bogor City.
+            </p>
+            <p class="text-slate-600 leading-relaxed">
+                The visualization helps the civil registration office efficiently monitor population counts by area, enabling data-driven decisions for resource allocation and public services.
+            </p>
+
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 space-y-3">
+                <h3 class="text-lg font-bold text-brand-navy">Key Features</h3>
+                <ul class="space-y-2">
+                    <li class="flex items-start gap-3 text-slate-600 text-sm">
+                        <span class="w-2 h-2 mt-1.5 rounded-full bg-brand-purple flex-shrink-0"></span>
+                        Interactive regional breakdown of population data by sub-district
+                    </li>
+                    <li class="flex items-start gap-3 text-slate-600 text-sm">
+                        <span class="w-2 h-2 mt-1.5 rounded-full bg-brand-blue flex-shrink-0"></span>
+                        Visual comparison charts for easy monitoring and reporting
+                    </li>
+                    <li class="flex items-start gap-3 text-slate-600 text-sm">
+                        <span class="w-2 h-2 mt-1.5 rounded-full bg-brand-pink flex-shrink-0"></span>
+                        Filter and drill-down capabilities for deeper analysis
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="py-12 px-6 bg-white">
+        <div class="max-w-4xl mx-auto space-y-6">
+            <div>
+                <h2 class="text-2xl font-extrabold text-brand-black">Project Gallery</h2>
+                <p class="text-slate-500 text-sm mt-1">Tambahkan foto/screenshot project dengan mengganti elemen di bawah ini.</p>
+            </div>
+
+            <!-- FOTO 1 -->
+            <img src="../Dashboard 2.png" alt="Population Data Visualization Dashboard" class="w-full rounded-2xl shadow-lg border border-slate-100">
+
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 bg-brand-black text-slate-400 border-t border-slate-800 text-center text-xs">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p>© 2026 Jihan Anindia Maharani. All rights reserved.</p>
+            <a href="../index.html" class="hover:text-brand-purple transition">← Back to Portfolio</a>
+        </div>
+    </footer>
+
+</body>
+</html>

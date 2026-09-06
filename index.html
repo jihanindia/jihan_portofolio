@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jihan Anindia Maharani - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            navy: '#0B0F19',
+                            black: '#05070A',
+                            purple: '#9333EA',
+                            blue: '#2563EB',
+                            pink: '#EC4899',
+                            lightBg: '#F8FAFC'
+                        }
+                    },
+                    boxShadow: {
+                        'glow-purple': '0 0 20px rgba(147, 51, 234, 0.45)',
+                        'glow-pink': '0 0 20px rgba(236, 72, 153, 0.45)',
+                        'glow-blue': '0 0 20px rgba(37, 99, 235, 0.45)',
+                        'glow-card': '0 10px 30px -10px rgba(147, 51, 234, 0.3)'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glow-text-pink  { text-shadow: 0 0 12px rgba(236,72,153,.6); }
+        .glow-text-purple{ text-shadow: 0 0 12px rgba(147,51,234,.6); }
+        .glow-text-blue  { text-shadow: 0 0 12px rgba(37,99,235,.6);  }
+
+        /* ── MODAL ── */
+        .modal-backdrop {
+            position: fixed; inset: 0; z-index: 999;
+            background: rgba(5,7,10,.55);
+            backdrop-filter: blur(6px);
+            opacity: 0; pointer-events: none;
+            transition: opacity .3s ease;
+        }
+        .modal-backdrop.open { opacity: 1; pointer-events: all; }
+
+        .modal-panel {
+            position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
+            background: #fff;
+            border-radius: 1.5rem 1.5rem 0 0;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: translateY(100%);
+            transition: transform .4s cubic-bezier(.16,1,.3,1);
+            box-shadow: 0 -8px 60px rgba(0,0,0,.18);
+        }
+        .modal-panel.open { transform: translateY(0); }
+
+        @media (min-width: 768px) {
+            .modal-panel {
+                left: 50%; right: auto;
+                transform: translateX(-50%) translateY(100%);
+                width: 780px;
+                max-height: 88vh;
+                bottom: 0;
+                border-radius: 1.5rem 1.5rem 0 0;
+            }
+            .modal-panel.open { transform: translateX(-50%) translateY(0); }
+        }
+
+        .modal-drag { width:40px; height:4px; background:#e2e8f0; border-radius:9px; margin:12px auto 0; }
+        .photo-slot {
+            border: 2px dashed #c4b5fd; background:#faf5ff;
+            min-height:180px; display:flex; align-items:center; justify-content:center;
+            color:#a78bfa; border-radius:1rem; text-align:center; padding:1.5rem;
+        }
+        .photo-slot.blue { border-color:#93c5fd; background:#eff6ff; color:#60a5fa; }
+        .photo-slot.pink { border-color:#f9a8d4; background:#fdf2f8; color:#f472b6; }
+    </style>
+</head>
+<body class="bg-brand-lightBg text-brand-navy antialiased selection:bg-brand-pink selection:text-white">
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-purple-100">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#hero" class="text-xl font-extrabold tracking-wider bg-gradient-to-r from-brand-purple via-brand-blue to-brand-pink bg-clip-text text-transparent hover:opacity-80 transition">
+                JIHAN ANINDIA MAHARANI<span class="text-brand-pink">.</span>
+            </a>
+            <nav class="hidden md:flex space-x-8 font-semibold text-sm text-slate-700">
+                <a href="#about" class="hover:text-brand-purple transition">About</a>
+                <a href="#experience" class="hover:text-brand-purple transition">Experience</a>
+                <a href="#projects" class="hover:text-brand-purple transition">Projects</a>
+                <a href="#skills" class="hover:text-brand-purple transition">Skills</a>
+                <a href="#contact" class="hover:text-brand-purple transition">Contact</a>
+            </nav>
+            <a href="#contact" class="bg-gradient-to-r from-brand-purple to-brand-pink text-white px-5 py-2.5 rounded-full text-sm font-medium shadow-glow-purple hover:shadow-glow-pink hover:scale-105 transition-all duration-300">
+                Get in Touch
+            </a>
+        </div>
+    </header>
+
+    <section id="hero" class="pt-32 pb-20 md:pt-40 md:pb-28 px-6 bg-gradient-to-b from-purple-50/50 via-white to-brand-lightBg relative overflow-hidden">
+        <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-gradient-to-tr from-brand-purple/20 via-brand-pink/20 to-brand-blue/20 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+        
+        <div class="max-w-6xl mx-auto grid md:grid-cols-12 gap-12 items-center">
+            <div class="md:col-span-7 space-y-6 text-center md:text-left">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-purple-200 shadow-sm">
+                    <span class="w-2.5 h-2.5 rounded-full bg-brand-pink animate-pulse"></span>
+                    <span class="text-xs font-bold tracking-wide uppercase text-brand-purple">Information Systems Graduate</span>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-brand-black leading-tight">
+                    Transforming Raw Data into <span class="bg-gradient-to-r from-brand-purple via-brand-blue to-brand-pink bg-clip-text text-transparent glow-text-purple">Actionable Insights</span>
+                </h1>
+                <p class="text-slate-600 text-base md:text-lg max-w-xl leading-relaxed">
+                    Information Systems graduate with hands-on experience in data analysis, business intelligence, and system analysis, alongside a growing interest in applying machine learning to support data-driven decision making.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-2">
+                    <a href="#projects" class="bg-brand-navy text-white px-7 py-3.5 rounded-xl font-semibold shadow-lg hover:shadow-glow-blue hover:bg-brand-blue transition-all duration-300 text-center">
+                        View Projects
+                    </a>
+                    <a href="#contact" class="bg-white text-brand-navy border border-slate-200 px-7 py-3.5 rounded-xl font-semibold shadow-sm hover:border-brand-purple hover:text-brand-purple hover:shadow-glow-purple transition-all duration-300 text-center">
+                        Contact Me
+                    </a>
+                </div>
+            </div>
+            
+            <div class="md:col-span-5 flex justify-center">
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-brand-pink via-brand-purple to-brand-blue rounded-full blur-lg opacity-70 group-hover:opacity-100 transition duration-500"></div>
+                    <div class="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-2xl bg-white">
+                        <img src="gw 3.jpg" alt="Jihan Anindia Maharani" class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 px-6 bg-white relative">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-brand-purple mb-2">About Me</h2>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-brand-black">Bridging Tech, Data & Business</h3>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="md:col-span-2 bg-brand-lightBg p-8 rounded-2xl border border-purple-100 hover:shadow-glow-purple transition-all duration-300 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <h4 class="text-xl font-bold text-brand-navy">Professional Background</h4>
+                        <p class="text-slate-600 leading-relaxed">
+                            Graduate from Universitas Binaniaga Indonesia (GPA 3.83) with hands-on experience in system and data analysis through academic projects and internship at Dinas Kependudukan dan Pencatatan Sipil Kota Bogor.
+                        </p>
+                        <p class="text-slate-600 leading-relaxed">
+                            Particularly interested in data analysis, visualization, and understanding business processes to generate meaningful insights and support better decision making. Equipped with strong analytical thinking and basic programming skills to solve real-world problems.
+                        </p>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-slate-200 grid grid-cols-2 gap-4">
+                        <div>
+                            <span class="block text-2xl font-extrabold text-brand-purple">3.83</span>
+                            <span class="text-xs text-slate-500 font-medium">Cumulative GPA</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl font-extrabold text-brand-blue">2+</span>
+                            <span class="text-xs text-slate-500 font-medium">Data & Analysis Roles</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-brand-navy to-slate-900 text-white p-8 rounded-2xl shadow-xl relative overflow-hidden flex flex-col justify-between border border-purple-500/20">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-pink/20 rounded-full blur-2xl pointer-events-none"></div>
+                    <div class="space-y-4 relative z-10">
+                        <h4 class="text-xl font-bold text-white glow-text-pink">Education</h4>
+                        <div>
+                            <span class="text-xs text-brand-pink font-semibold uppercase tracking-wider">2022 - Present</span>
+                            <h5 class="text-lg font-bold text-white mt-1">Universitas Binaniaga Indonesia</h5>
+                            <p class="text-slate-300 text-sm">Bachelor of Information System</p>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-slate-700/60 relative z-10">
+                        <span class="text-xs text-slate-400 block mb-1">Certifications</span>
+                        <p class="text-sm font-semibold text-purple-200">Cisco Networking Academy (CCNA)</p>
+                        <p class="text-sm font-semibold text-purple-200">English Conversation MAXY Academy (Score: 3.50)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-20 px-6 bg-brand-lightBg">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-brand-purple mb-2">Track Record</h2>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-brand-black">Work & Leadership Experience</h3>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-glow-blue transition-all duration-300 relative">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="p-3 bg-blue-50 text-brand-blue rounded-xl">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-brand-navy">Work Experience</h4>
+                            <p class="text-xs text-slate-500">Dinas Kependudukan dan Pencatatan Sipil Kota Bogor</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="border-l-2 border-brand-blue pl-4 space-y-1">
+                            <span class="text-xs font-semibold text-brand-blue">Feb - Jun 2025</span>
+                            <h5 class="font-bold text-slate-800">IKD Application Operator</h5>
+                            <ul class="text-xs text-slate-600 space-y-1 list-disc list-inside mt-2">
+                                <li>Identified issues related to population data and provided solutions</li>
+                                <li>Provided instructions for installing the IKD application</li>
+                                <li>Prepared population administration document submissions</li>
+                            </ul>
+                        </div>
+
+                        <div class="border-l-2 border-brand-purple pl-4 space-y-1">
+                            <span class="text-xs font-semibold text-brand-purple">2025</span>
+                            <h5 class="font-bold text-slate-800">Data Analyst</h5>
+                            <ul class="text-xs text-slate-600 space-y-1 list-disc list-inside mt-2">
+                                <li>Prepared data for analysis and reporting purposes</li>
+                                <li>Built an aggregate data visualization using Tableau</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-glow-purple transition-all duration-300 relative">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="p-3 bg-purple-50 text-brand-purple rounded-xl">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-brand-navy">Organizational Experience</h4>
+                            <p class="text-xs text-slate-500">Universitas Binaniaga Indonesia</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="border-l-2 border-brand-purple pl-4 space-y-1">
+                            <span class="text-xs font-semibold text-brand-purple">2022 - 2023</span>
+                            <h5 class="font-bold text-slate-800">Treasurer - UKM Seni</h5>
+                            <ul class="text-xs text-slate-600 space-y-1 list-disc list-inside mt-2">
+                                <li>Managed and recorded the organization's cash flow</li>
+                                <li>Prepared monthly and annual financial reports</li>
+                                <li>Coordinated budget planning with divisions</li>
+                            </ul>
+                        </div>
+
+                        <div class="border-l-2 border-brand-pink pl-4 space-y-1">
+                            <span class="text-xs font-semibold text-brand-pink">April 2025</span>
+                            <h5 class="font-bold text-slate-800">Head of Committee - SCHC Video Production</h5>
+                            <ul class="text-xs text-slate-600 space-y-1 list-disc list-inside mt-2">
+                                <li>Conducted needs analysis & budget planning</li>
+                                <li>Coordinated permits and funding with university</li>
+                                <li>Designed execution plan from pre to post-production</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20 px-6 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-brand-purple mb-2">Portfolio</h2>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-brand-black">Featured Projects & Case Studies</h3>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+
+                <!-- CARD 1: Visualization -->
+                <div onclick="openModal('modal-viz')" class="group cursor-pointer bg-brand-lightBg rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-glow-purple hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                    <div class="p-6 space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-[10px] font-bold px-3 py-1 bg-purple-100 text-brand-purple rounded-full uppercase tracking-wider">Visualization</span>
+                            <span class="text-xs text-slate-400 font-medium">2024</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-brand-navy group-hover:text-brand-purple transition">Population Data Visualization</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">Interactive data visualization using Tableau to display Bogor City's population count by region, helping the office monitor population distribution accurately.</p>
+                    </div>
+                    <div class="p-6 pt-0 flex items-center justify-between">
+                        <span class="inline-block text-xs font-semibold text-slate-500 bg-white px-3 py-1.5 rounded-lg border border-slate-200">Tableau</span>
+                        <span class="inline-flex items-center gap-1 text-xs font-semibold text-brand-purple group-hover:gap-2 transition-all duration-200">
+                            View Details <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- CARD 2: Clustering -->
+                <div class="group bg-brand-lightBg rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-glow-blue hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                    <div onclick="openModal('modal-cluster')" class="cursor-pointer p-6 space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-[10px] font-bold px-3 py-1 bg-blue-100 text-brand-blue rounded-full uppercase tracking-wider">Clustering</span>
+                            <span class="text-xs text-slate-400 font-medium">Machine Learning</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-brand-navy group-hover:text-brand-blue transition">Population Data Clustering</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">Grouping sub-districts based on population data characteristics using K-Means algorithm in Python to determine priority areas for birth certificate issuance.</p>
+                    </div>
+                    <div class="p-6 pt-0 flex flex-wrap gap-2 items-center justify-between">
+                        <div class="flex gap-2">
+                            <span class="inline-block text-xs font-semibold text-slate-500 bg-white px-3 py-1.5 rounded-lg border border-slate-200">Python</span>
+                            <span class="inline-block text-xs font-semibold text-slate-500 bg-white px-3 py-1.5 rounded-lg border border-slate-200">K-Means</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="https://github.com/jihanindia/clustering_akta" target="_blank" onclick="event.stopPropagation()" class="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-blue bg-blue-50 border border-blue-200 px-3 py-1.5 rounded-lg hover:bg-brand-blue hover:text-white transition-all duration-200">
+                                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.896-.015 3.286 0 .315.216.69.825.57C20.565 21.795 24 17.298 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                                GitHub
+                            </a>
+                            <button onclick="openModal('modal-cluster')" class="inline-flex items-center gap-1 text-xs font-semibold text-brand-blue hover:gap-2 transition-all duration-200">
+                                Details <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 3: Preeclampsia -->
+                <div class="group bg-brand-lightBg rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-glow-pink hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                    <div onclick="openModal('modal-knn')" class="cursor-pointer p-6 space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-[10px] font-bold px-3 py-1 bg-pink-100 text-brand-pink rounded-full uppercase tracking-wider">Classification</span>
+                            <span class="text-xs text-slate-400 font-medium">Healthcare AI</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-brand-navy group-hover:text-brand-pink transition">Early Detection of Preeclampsia</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">Building a KNN classification model in Python to detect early risk of preeclampsia in pregnant women based on health center examination data.</p>
+                    </div>
+                    <div class="p-6 pt-0 flex flex-wrap gap-2 items-center justify-between">
+                        <div class="flex gap-2">
+                            <span class="inline-block text-xs font-semibold text-slate-500 bg-white px-3 py-1.5 rounded-lg border border-slate-200">Python</span>
+                            <span class="inline-block text-xs font-semibold text-slate-500 bg-white px-3 py-1.5 rounded-lg border border-slate-200">KNN Algorithm</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="https://github.com/jihanindia/skripsi-SIDINI" target="_blank" onclick="event.stopPropagation()" class="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-pink bg-pink-50 border border-pink-200 px-3 py-1.5 rounded-lg hover:bg-brand-pink hover:text-white transition-all duration-200">
+                                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.896-.015 3.286 0 .315.216.69.825.57C20.565 21.795 24 17.298 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                                GitHub
+                            </a>
+                            <button onclick="openModal('modal-knn')" class="inline-flex items-center gap-1 text-xs font-semibold text-brand-pink hover:gap-2 transition-all duration-200">
+                                Details <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-20 px-6 bg-brand-navy text-white relative overflow-hidden">
+        <div class="absolute top-1/2 left-0 w-72 h-72 bg-brand-purple/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 right-0 w-72 h-72 bg-brand-blue/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-brand-pink mb-2 glow-text-pink">Capabilities</h2>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-white">Skills & Specializations</h3>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="space-y-4">
+                    <h4 class="text-lg font-bold text-purple-300 mb-4">Tools</h4>
+                    <div class="flex flex-wrap gap-2.5">
+                        <span class="px-4 py-2 rounded-xl bg-slate-800/80 border border-purple-500/30 text-sm font-medium text-slate-200 shadow-glow-purple hover:border-brand-purple transition">Python</span>
+                        <span class="px-4 py-2 rounded-xl bg-slate-800/80 border border-blue-500/30 text-sm font-medium text-slate-200 shadow-glow-blue hover:border-brand-blue transition">SQL</span>
+                        <span class="px-4 py-2 rounded-xl bg-slate-800/80 border border-pink-500/30 text-sm font-medium text-slate-200 shadow-glow-pink hover:border-brand-pink transition">Tableau</span>
+                        <span class="px-4 py-2 rounded-xl bg-slate-800/80 border border-purple-500/30 text-sm font-medium text-slate-200 shadow-glow-purple hover:border-brand-purple transition">Power BI</span>
+                        <span class="px-4 py-2 rounded-xl bg-slate-800/80 border border-purple-500/30 text-sm font-medium text-slate-200 shadow-glow-purple hover:border-brand-purple transition">Microsoft Excel</span>
+                        <span class="px-4 py-2 rounded-xl bg-slate-800/80 border border-slate-700 text-sm font-medium text-slate-300">PHP</span>
+                        <span class="px-4 py-2 rounded-xl bg-slate-800/80 border border-slate-700 text-sm font-medium text-slate-300">HTML</span>
+                        <span class="px-4 py-2 rounded-xl bg-slate-800/80 border border-slate-700 text-sm font-medium text-slate-300">Enterprise Architect</span>
+                        <span class="px-4 py-2 rounded-xl bg-slate-800/80 border border-slate-700 text-sm font-medium text-slate-300">Figma</span>
+                        <span class="px-4 py-2 rounded-xl bg-slate-800/80 border border-slate-700 text-sm font-medium text-slate-300">Microsoft Visio</span>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="text-lg font-bold text-blue-300 mb-4">Soft Skills</h4>
+                        <div class="flex flex-wrap gap-2.5">
+                            <span class="px-4 py-2 rounded-xl bg-slate-800/80 border border-slate-700 text-sm font-medium text-slate-200">Problem Solving</span>
+                            <span class="px-4 py-2 rounded-xl bg-slate-800/80 border border-slate-700 text-sm font-medium text-slate-200">Critical Thinking</span>
+                            <span class="px-4 py-2 rounded-xl bg-slate-800/80 border border-slate-700 text-sm font-medium text-slate-200">Leadership</span>
+                            <span class="px-4 py-2 rounded-xl bg-slate-800/80 border border-slate-700 text-sm font-medium text-slate-200">Team Collaboration</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="text-lg font-bold text-pink-300 mb-4">Career Interests</h4>
+                        <div class="flex flex-wrap gap-2.5">
+                            <span class="px-4 py-2 rounded-full bg-gradient-to-r from-brand-purple to-brand-blue text-xs font-bold uppercase tracking-wider text-white shadow-glow-purple">Data Analyst</span>
+                            <span class="px-4 py-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-pink text-xs font-bold uppercase tracking-wider text-white shadow-glow-blue">Data Scientist</span>
+                            <span class="px-4 py-2 rounded-full bg-gradient-to-r from-brand-pink to-brand-purple text-xs font-bold uppercase tracking-wider text-white shadow-glow-pink">Business IT Analyst</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 px-6 bg-white relative">
+        <div class="max-w-4xl mx-auto text-center space-y-8">
+            <div class="space-y-3">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-brand-purple">Connect</h2>
+                <h3 class="text-3xl md:text-5xl font-extrabold text-brand-black">Let's Work Together</h3>
+            </div>
+
+            <div class="grid sm:grid-cols-3 gap-6 pt-6">
+                <div class="p-6 rounded-2xl bg-brand-lightBg border border-slate-200 hover:border-brand-purple hover:shadow-glow-purple transition-all duration-300">
+                    <div class="w-10 h-10 mx-auto mb-3 bg-purple-100 text-brand-purple rounded-full flex items-center justify-center">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block">Location</span>
+                    <span class="text-sm font-semibold text-brand-navy mt-1 block">Bogor City, Indonesia</span>
+                </div>
+
+                <a href="https://wa.me/6289630290121" target="_blank" class="p-6 rounded-2xl bg-brand-lightBg border border-slate-200 hover:border-brand-blue hover:shadow-glow-blue transition-all duration-300 block">
+                    <div class="w-10 h-10 mx-auto mb-3 bg-blue-100 text-brand-blue rounded-full flex items-center justify-center">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                    </div>
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block">Phone / WhatsApp</span>
+                    <span class="text-sm font-semibold text-brand-navy mt-1 block">+62 896-3029-0121</span>
+                </a>
+
+                <a href="mailto:zuyizujihan208@gmail.com" class="p-6 rounded-2xl bg-brand-lightBg border border-slate-200 hover:border-brand-pink hover:shadow-glow-pink transition-all duration-300 block">
+                    <div class="w-10 h-10 mx-auto mb-3 bg-pink-100 text-brand-pink rounded-full flex items-center justify-center">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block">Email</span>
+                    <span class="text-sm font-semibold text-brand-navy mt-1 block truncate">zuyizujihan208@gmail.com</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-8 bg-brand-black text-slate-400 border-t border-slate-800 text-center text-xs">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p>© 2026 Jihan Anindia Maharani. All rights reserved.</p>
+            <p class="text-slate-500">Designed with Tailwind CSS & Glow FX</p>
+        </div>
+    </footer>
+
+    <!-- ════════════════════════════════════════════
+         MODAL 1 — Population Data Visualization
+    ════════════════════════════════════════════ -->
+    <div id="modal-viz" class="modal-backdrop" onclick="closeModal('modal-viz')">
+        <div class="modal-panel" onclick="event.stopPropagation()">
+            <div class="modal-drag"></div>
+            <!-- Header -->
+            <div class="px-6 pt-5 pb-4 border-b border-slate-100 flex items-start justify-between gap-4">
+                <div>
+                    <span class="text-[10px] font-bold px-3 py-1 bg-purple-100 text-brand-purple rounded-full uppercase tracking-wider">Visualization · 2024</span>
+                    <h2 class="text-2xl font-extrabold text-brand-black mt-2 glow-text-purple">Population Data Visualization</h2>
+                    <p class="text-slate-500 text-sm mt-1">Interactive dashboard using Tableau — Dinas Kependudukan dan Pencatatan Sipil Kota Bogor</p>
+                </div>
+                <button onclick="closeModal('modal-viz')" class="text-slate-400 hover:text-slate-700 transition flex-shrink-0 mt-1">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <!-- Stats -->
+            <div class="grid grid-cols-3 gap-3 px-6 py-4 bg-brand-lightBg">
+                <div class="text-center">
+                    <span class="text-lg font-extrabold text-brand-purple block">Tableau</span>
+                    <span class="text-[10px] text-slate-500">Tools</span>
+                </div>
+                <div class="text-center">
+                    <span class="text-lg font-extrabold text-brand-blue block">2024</span>
+                    <span class="text-[10px] text-slate-500">Year</span>
+                </div>
+                <div class="text-center">
+                    <span class="text-lg font-extrabold text-brand-pink block">Disdukcapil</span>
+                    <span class="text-[10px] text-slate-500">Stakeholder</span>
+                </div>
+            </div>
+            <!-- Body -->
+            <div class="px-6 py-5 space-y-5">
+                <div class="space-y-2">
+                    <h3 class="text-base font-bold text-brand-navy">Project Overview</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Interactive data visualization using Tableau to display Bogor City's population count by region, helping the office monitor population distribution accurately and make data-driven decisions for resource allocation.</p>
+                </div>
+                <div class="bg-brand-lightBg rounded-xl p-4 space-y-2">
+                    <h4 class="text-sm font-bold text-brand-navy">Key Features</h4>
+                    <ul class="space-y-1.5 text-sm text-slate-600">
+                        <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 mt-1.5 rounded-full bg-brand-purple flex-shrink-0"></span>Interactive regional breakdown of population data by sub-district</li>
+                        <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 mt-1.5 rounded-full bg-brand-blue flex-shrink-0"></span>Visual comparison charts for easy monitoring and reporting</li>
+                        <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 mt-1.5 rounded-full bg-brand-pink flex-shrink-0"></span>Filter and drill-down capabilities for deeper analysis</li>
+                    </ul>
+                </div>
+                <!-- Gallery -->
+                <div>
+                    <h3 class="text-base font-bold text-brand-navy mb-3">Gallery</h3>
+                    <img src="Dashboard 2.png" alt="Population Data Visualization Dashboard" class="w-full rounded-xl shadow border border-slate-100">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════
+         MODAL 2 — Population Data Clustering
+    ════════════════════════════════════════════ -->
+    <div id="modal-cluster" class="modal-backdrop" onclick="closeModal('modal-cluster')">
+        <div class="modal-panel" onclick="event.stopPropagation()">
+            <div class="modal-drag"></div>
+            <div class="px-6 pt-5 pb-4 border-b border-slate-100 flex items-start justify-between gap-4">
+                <div>
+                    <span class="text-[10px] font-bold px-3 py-1 bg-blue-100 text-brand-blue rounded-full uppercase tracking-wider">Clustering · Machine Learning</span>
+                    <h2 class="text-2xl font-extrabold text-brand-black mt-2 glow-text-blue">Population Data Clustering</h2>
+                    <p class="text-slate-500 text-sm mt-1">K-Means clustering dengan Python — Dinas Kependudukan dan Pencatatan Sipil Kota Bogor</p>
+                </div>
+                <button onclick="closeModal('modal-cluster')" class="text-slate-400 hover:text-slate-700 transition flex-shrink-0 mt-1">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <div class="grid grid-cols-3 gap-3 px-6 py-4 bg-brand-lightBg">
+                <div class="text-center">
+                    <span class="text-lg font-extrabold text-brand-blue block">K-Means</span>
+                    <span class="text-[10px] text-slate-500">Algorithm</span>
+                </div>
+                <div class="text-center">
+                    <span class="text-lg font-extrabold text-brand-purple block">Python</span>
+                    <span class="text-[10px] text-slate-500">Language</span>
+                </div>
+                <div class="text-center">
+                    <a href="https://github.com/jihanindia/clustering_akta" target="_blank" class="inline-flex items-center gap-1 text-brand-blue font-bold text-sm hover:underline">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.896-.015 3.286 0 .315.216.69.825.57C20.565 21.795 24 17.298 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                        GitHub
+                    </a>
+                    <span class="text-[10px] text-slate-500 block">Repository</span>
+                </div>
+            </div>
+            <div class="px-6 py-5 space-y-5">
+                <div class="space-y-2">
+                    <h3 class="text-base font-bold text-brand-navy">Project Overview</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Applies unsupervised machine learning using K-Means clustering to group sub-districts in Bogor City based on population characteristics. The analysis helps identify priority areas for birth certificate issuance programs.</p>
+                </div>
+                <div class="bg-brand-lightBg rounded-xl p-4 space-y-2">
+                    <h4 class="text-sm font-bold text-brand-navy">Key Features</h4>
+                    <ul class="space-y-1.5 text-sm text-slate-600">
+                        <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 mt-1.5 rounded-full bg-brand-blue flex-shrink-0"></span>K-Means clustering to group sub-districts by population characteristics</li>
+                        <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 mt-1.5 rounded-full bg-brand-purple flex-shrink-0"></span>Elbow method for optimal cluster number determination</li>
+                        <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 mt-1.5 rounded-full bg-brand-pink flex-shrink-0"></span>Visualization of cluster results for interpretability</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-base font-bold text-brand-navy mb-3">Gallery</h3>
+                    <img src="kmeans.png" alt="K-Means Clustering Result" class="w-full rounded-xl shadow border border-slate-100">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════
+         MODAL 3 — Early Detection of Preeclampsia
+    ════════════════════════════════════════════ -->
+    <div id="modal-knn" class="modal-backdrop" onclick="closeModal('modal-knn')">
+        <div class="modal-panel" onclick="event.stopPropagation()">
+            <div class="modal-drag"></div>
+            <div class="px-6 pt-5 pb-4 border-b border-slate-100 flex items-start justify-between gap-4">
+                <div>
+                    <span class="text-[10px] font-bold px-3 py-1 bg-pink-100 text-brand-pink rounded-full uppercase tracking-wider">Classification · Healthcare AI</span>
+                    <h2 class="text-2xl font-extrabold text-brand-black mt-2 glow-text-pink">Early Detection of Preeclampsia</h2>
+                    <p class="text-slate-500 text-sm mt-1">KNN classification model dengan Python — Skripsi (SIDINI)</p>
+                </div>
+                <button onclick="closeModal('modal-knn')" class="text-slate-400 hover:text-slate-700 transition flex-shrink-0 mt-1">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <div class="grid grid-cols-3 gap-3 px-6 py-4 bg-brand-lightBg">
+                <div class="text-center">
+                    <span class="text-lg font-extrabold text-brand-pink block">KNN</span>
+                    <span class="text-[10px] text-slate-500">Algorithm</span>
+                </div>
+                <div class="text-center">
+                    <span class="text-lg font-extrabold text-brand-purple block">Python</span>
+                    <span class="text-[10px] text-slate-500">Language</span>
+                </div>
+                <div class="text-center">
+                    <a href="https://github.com/jihanindia/skripsi-SIDINI" target="_blank" class="inline-flex items-center gap-1 text-brand-pink font-bold text-sm hover:underline">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.896-.015 3.286 0 .315.216.69.825.57C20.565 21.795 24 17.298 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                        GitHub
+                    </a>
+                    <span class="text-[10px] text-slate-500 block">Repository</span>
+                </div>
+            </div>
+            <div class="px-6 py-5 space-y-5">
+                <div class="space-y-2">
+                    <h3 class="text-base font-bold text-brand-navy">Project Overview</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Skripsi yang membangun model klasifikasi machine learning menggunakan algoritma K-Nearest Neighbor (KNN) untuk mendeteksi dini risiko preeklampsia pada ibu hamil berdasarkan data pemeriksaan dari Puskesmas.</p>
+                </div>
+                <div class="bg-brand-lightBg rounded-xl p-4 space-y-2">
+                    <h4 class="text-sm font-bold text-brand-navy">Key Features</h4>
+                    <ul class="space-y-1.5 text-sm text-slate-600">
+                        <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 mt-1.5 rounded-full bg-brand-pink flex-shrink-0"></span>KNN classification model untuk prediksi risiko preeklampsia</li>
+                        <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 mt-1.5 rounded-full bg-brand-purple flex-shrink-0"></span>Preprocessing data dan feature selection dari rekam medis</li>
+                        <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 mt-1.5 rounded-full bg-brand-blue flex-shrink-0"></span>Evaluasi model: accuracy, precision, dan recall</li>
+                        <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 mt-1.5 rounded-full bg-brand-pink flex-shrink-0"></span>Aplikasi web SIDINI untuk input screening real-time</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-base font-bold text-brand-navy mb-3">Gallery</h3>
+                    <img src="knn.png" alt="KNN Model Result" class="w-full rounded-xl shadow border border-slate-100 mb-3">
+                    <!-- FOTO 2 -->
+                    <img src="knn2.png" alt="Early Detection of Preeclampsia Result 2" class="w-full rounded-xl shadow border border-slate-100">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(id) {
+            const backdrop = document.getElementById(id);
+            backdrop.classList.add('open');
+            backdrop.querySelector('.modal-panel').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal(id) {
+            const backdrop = document.getElementById(id);
+            backdrop.querySelector('.modal-panel').classList.remove('open');
+            backdrop.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        // Tutup modal dengan tombol Escape
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') {
+                ['modal-viz','modal-cluster','modal-knn'].forEach(closeModal);
+            }
+        });
+    </script>
+
+</body>
+</html>
